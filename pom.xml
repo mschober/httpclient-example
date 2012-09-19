@@ -14,6 +14,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>onejar-maven-plugin.googlecode.com</id>
+            <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+        </pluginRepository>
+    </pluginRepositories>
+
   <build>
     <plugins>
       <plugin>
@@ -37,19 +44,19 @@
           </configuration>
       </plugin>
       <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-shade-plugin</artifactId>
+          <groupId>org.dstovall</groupId>
+          <artifactId>onejar-maven-plugin</artifactId>
+          <version>1.4.4</version>
           <executions>
               <execution>
-                  <phase>package</phase>
+                  <configuration>
+                      <attachToBuild>true</attachToBuild>
+                  </configuration>
                   <goals>
-                      <goal>shade</goal>
+                      <goal>one-jar</goal>
                   </goals>
               </execution>
           </executions>
-          <configuration>
-              <finalName>uber-${artifactId}-${version}</finalName>
-          </configuration>
       </plugin>
     </plugins>
   </build>
@@ -75,6 +82,11 @@
         <groupId>commons-httpclient</groupId>
         <artifactId>commons-httpclient</artifactId>
         <version>3.1</version>
+    </dependency>
+    <dependency>
+        <groupId>com.jolira</groupId>
+        <artifactId>onejar-maven-plugin</artifactId>
+        <version>1.4.4</version>
     </dependency>
   </dependencies>
 </project>
